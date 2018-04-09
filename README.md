@@ -15,7 +15,7 @@ for line in self.loadfile(filename):
 train_set 
 {user: {movie: rating, ...}, ...}
 ```
-
+-----
 
 ```python
 movie2users = dict()
@@ -29,6 +29,7 @@ for user, movies in self.train_set.items():
 movie2users
 {movie: {user, ...}, ...}
 ```
+-----
 
 
 ```python
@@ -47,7 +48,7 @@ user_sim_mat
 {user_0: {user_1: count, ...}, ...}
 
 ```
-
+-----
 
 
 ```python
@@ -59,6 +60,7 @@ for u, related_users in usersim_mat.items():
 user_sim_mat
 {user_0: {user_1: similarity, ...}, ...}
 ```
+-----
 
 
 ```python
@@ -102,7 +104,7 @@ for line in self.loadfile(filename):
 train_set
 {user: {movie: rating, ...}, ...}
 ```
-
+-----
 
 ```python
 for user, movies in self.train_set.items():
@@ -115,7 +117,7 @@ for user, movies in self.train_set.items():
 movie_popular
 {movie: count, ...}
 ```
-
+-----
 
 ```python
 movie_sim_mat = {}
@@ -132,6 +134,7 @@ for user, movies in self.train_set.items():
 movie_sim_mat
 {movie_0: {movie_1: count, ...}, ...}
 ```
+-----
 
 
 ```python
@@ -143,7 +146,7 @@ for m1, related_movies in movie_sim_mat.items():
 movie_sim_mat
 {movie_0: {movie_1: similarity, ...}, ...}
 ```
-
+-----
 
 
 ```python
