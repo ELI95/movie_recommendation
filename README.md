@@ -11,8 +11,10 @@ for line in self.loadfile(filename):
         self.test_set[user][movie] = int(rating)
         test_set_len += 1
 ```
-train_set
+```python
+train_set 
 {user: {movie: rating, ...}, ...}
+```
 
 
 ```python
@@ -23,9 +25,10 @@ for user, movies in self.train_set.items():
             movie2users[movie] = set()
         movie2users[movie].add(user)
 ```
+```python
 movie2users
 {movie: {user, ...}, ...}
-
+```
 
 
 ```python
@@ -39,8 +42,11 @@ for movie, users in movie2users.items():
             user_sim_mat[u].setdefault(v, 0)
             user_sim_mat[u][v] += 1
 ```
+```python
 user_sim_mat
 {user_0: {user_1: count, ...}, ...}
+
+```
 
 
 
@@ -49,8 +55,10 @@ for u, related_users in usersim_mat.items():
     for v, count in related_users.items():
         usersim_mat[u][v] = count / math.sqrt(len(self.train_set[u]) * len(self.train_set[v]))
 ```
+```python
 user_sim_mat
 {user_0: {user_1: similarity, ...}, ...}
+```
 
 
 ```python
@@ -72,7 +80,9 @@ def recommend(self, user):
             rank[movie] += similarity_factor
     return sorted(rank.items(), key=itemgetter(1), reverse=True)[0:N]
 ```
+```python
 [(movie, recommendation_value), ...]
+```
 
 
 ## item_cf
@@ -88,8 +98,10 @@ for line in self.loadfile(filename):
         self.test_set[user][movie] = int(rating)
         test_set_len += 1
 ```
+```python
 train_set
 {user: {movie: rating, ...}, ...}
+```
 
 
 ```python
@@ -99,8 +111,10 @@ for user, movies in self.train_set.items():
             self.movie_popular[movie] = 0
         self.movie_popular[movie] += 1
 ```
+```python
 movie_popular
 {movie: count, ...}
+```
 
 
 ```python
@@ -114,8 +128,10 @@ for user, movies in self.train_set.items():
             movie_sim_mat[m1].setdefault(m2, 0)
             movie_sim_mat[m1][m2] += 1
 ```
+```python
 movie_sim_mat
 {movie_0: {movie_1: count, ...}, ...}
+```
 
 
 ```python
@@ -123,8 +139,11 @@ for m1, related_movies in movie_sim_mat.items():
     for m2, count in related_movies.items():
         item_sim_mat[m1][m2] = count / math.sqrt(self.movie_popular[m1] * self.movie_popular[m2])
 ```
+```python
 movie_sim_mat
 {movie_0: {movie_1: similarity, ...}, ...}
+```
+
 
 
 ```python
@@ -146,4 +165,7 @@ def recommend(self, user):
             rank[related_movie] += similarity_factor * rating
     return sorted(rank.items(), key=itemgetter(1), reverse=True)[:N]
 ```
+```python
 [(movie, recommendation_value), ...]
+```
+
