@@ -86,7 +86,7 @@ def recommend(self, user):
 [(movie, recommendation_value), ...]
 ```
 
-<br>
+</br>
 ## item_cf
 ```python
 for line in self.loadfile(filename):
